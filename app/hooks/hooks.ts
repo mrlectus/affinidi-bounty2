@@ -1,10 +1,12 @@
 import { useInfiniteQuery, useMutation, useQuery } from "@tanstack/react-query";
 import {
   addToBookmark,
+  apply,
   deleteBookmark,
   getAllJobs,
   getCountryInfo,
   getCurrency,
+  getJob,
   getUserInfo,
   sendEmail,
 } from "../service/api";
@@ -119,6 +121,23 @@ export const useDeleteBookmark = () => {
     },
     onError: (error) => {
       toast.error(error.message);
+    },
+  });
+};
+
+export const useGetJob = (id: number) => {
+  return useQuery({
+    queryKey: ["job", id],
+    queryFn: () => getJob(id),
+  });
+};
+
+export const useApply = () => {
+  return useMutation({
+    mutationKey: ["apply"],
+    mutationFn: apply,
+    onSuccess: (data) => {
+      toast.success(data.message);
     },
   });
 };

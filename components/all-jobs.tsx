@@ -7,7 +7,7 @@ export const AllJobs = () => {
   const { data } = useGetUser();
   const ref = React.useRef<IntersectionObserver>();
   const country = data?.country; //TODO remember to change this later
-  const jobs = useFetchPaginatedJobs({ country: "China", limit: 20 });
+  const jobs = useFetchPaginatedJobs({ country: country as string, limit: 10 });
   const lastPostRef = React.useCallback(
     (job: Element) => {
       if (jobs.isFetchingNextPage) return;
@@ -25,11 +25,11 @@ export const AllJobs = () => {
   if (jobs.isLoading) {
     return (
       <div className="flex flex-col gap-2 p-4">
-        <Skeleton className="h-4 w-full h-[200px]" />
-        <Skeleton className="h-4 w-full h-[200px]" />
-        <Skeleton className="h-4 w-full h-[200px]" />
-        <Skeleton className="h-4 w-full h-[200px]" />
-        <Skeleton className="h-4 w-full h-[200px]" />
+        <Skeleton className="h-4 w-full h-[200px] md:w-[500px]" />
+        <Skeleton className="h-4 w-full h-[200px] md:w-[500px]" />
+        <Skeleton className="h-4 w-full h-[200px] md:w-[500px]" />
+        <Skeleton className="h-4 w-full h-[200px] md:w-[500px]" />
+        <Skeleton className="h-4 w-full h-[200px] md:w-[500px]" />
       </div>
     );
   }

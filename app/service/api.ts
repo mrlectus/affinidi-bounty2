@@ -180,3 +180,24 @@ export const deleteBookmark = async ({
     throw error;
   }
 };
+
+export const getJob = async (id: number) => {
+  const response = await fetch(`/api/jobs/${id}`, {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  const data = await response.json();
+  return data as TJobs;
+};
+
+export const apply = async () => {
+  const response = await fetch(`/api/jobs/apply`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  const data = await response.json();
+  return data as { message: string };
+};

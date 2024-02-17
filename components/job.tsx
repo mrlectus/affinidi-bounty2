@@ -26,8 +26,12 @@ export const Job = React.forwardRef((job: TJobs, ref: any) => {
   const { data } = useGetUser();
   const email = data?.email;
   const country = data?.country;
+
   return (
-    <Card ref={ref} className="hover:border-2 hover:border-blue-800">
+    <Card
+      ref={ref}
+      className="hover:border-2 dark:hover:border-blue-800 hover:border-blue-800 md:w-[500px] dark:border-white"
+    >
       <CardHeader className="pb-1 ">
         <CardTitle className="flex flex-row items-center justify-between">
           <p className="text-xl hover:underline hover:cursor-pointer">
@@ -50,7 +54,7 @@ export const Job = React.forwardRef((job: TJobs, ref: any) => {
       </CardContent>
       <CardFooter className="flex gap-4">
         <Link href={`/apply/${job.id}`} passHref>
-          <Button className="bg-blue-700">Apply now</Button>
+          <Button className="bg-blue-700 dark:text-white">Apply now</Button>
         </Link>
         <TooltipProvider>
           <Tooltip>

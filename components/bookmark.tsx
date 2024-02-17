@@ -10,6 +10,7 @@ import { SVGLocation, SVGOffice } from "@/components/icons/icons";
 import { Button } from "@/components/ui/button";
 import { useDeleteBookmark, useGetUser } from "@/app/hooks/hooks";
 import { Price } from "./price";
+import Link from "next/link";
 
 export const Bookmark = (bookmark: any) => {
   const { data } = useGetUser();
@@ -18,7 +19,7 @@ export const Bookmark = (bookmark: any) => {
   const myBookmark = useDeleteBookmark();
 
   return (
-    <Card className="hover:border-2 hover:border-blue-800">
+    <Card className="hover:border-2 dark:hover:border-blue-800 hover:border-blue-800 md:w-[500px] dark:border-white">
       <CardHeader className="pb-1 ">
         <CardTitle className="flex flex-row items-center justify-between">
           <p className="text-xl hover:underline hover:cursor-pointer">
@@ -48,7 +49,9 @@ export const Bookmark = (bookmark: any) => {
         />
       </CardContent>
       <CardFooter className="flex gap-4">
-        <Button className="bg-blue-700">Apply now</Button>
+        <Link href={`/apply/${bookmark.id}`} passHref>
+          <Button className="bg-blue-700 dark:text-white">Apply now</Button>
+        </Link>
       </CardFooter>
     </Card>
   );

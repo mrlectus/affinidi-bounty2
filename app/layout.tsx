@@ -5,6 +5,7 @@ import { Toaster } from "react-hot-toast";
 import { UserProvider } from "@auth0/nextjs-auth0/client";
 import { Navbar } from "@/components/navbar";
 import { Inter } from "next/font/google";
+import { ThemeProvider } from "@/components/theme-provider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,8 +22,15 @@ export default function RootLayout({
       <QueryProvider>
         <UserProvider>
           <body className={inter.className}>
-            <Navbar />
-            {children}
+            <ThemeProvider
+              attribute="class"
+              defaultTheme="system"
+              enableSystem
+              disableTransitionOnChange
+            >
+              <Navbar />
+              {children}
+            </ThemeProvider>
             <ReactQueryDevtools
               initialIsOpen={false}
               buttonPosition="bottom-left"

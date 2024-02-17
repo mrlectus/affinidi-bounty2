@@ -9,12 +9,13 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { SVGBookmark, SVGProfile } from "./icons/icons";
+import { ModeToggle } from "./mode-toggle";
 
 export const Navbar = async () => {
   const { nickname, email, givenName, picture } = await getUserProfile();
   await createUser(email as string);
   return (
-    <nav className="flex md:justify-around md:flex-row bg-[#f5f5f5] shadow-xl min-h-24 py-4 items-center flex-col gap-2">
+    <nav className="dark:bg-black dark:border-b-purple-800 dark:border-2 flex md:justify-around md:flex-row bg-[#f5f5f5] shadow-xl min-h-24 py-4 items-center flex-col gap-2">
       <div>
         <Link href="/" className="text-xl font-bold">
           StackJobs
@@ -40,14 +41,14 @@ export const Navbar = async () => {
                     <p>{email}</p>
                     <Link
                       href="/profile"
-                      className="flex items-center w-full gap-2 rounded-md h-10 hover:bg-gray-100"
+                      className="flex items-center w-full gap-2 rounded-md h-10 hover:bg-gray-100 dark:hover:bg-purple-600"
                     >
                       <SVGProfile /> Profile
                     </Link>
                     <Link
                       prefetch={false}
                       href="/bookmarks"
-                      className="flex items-center w-full gap-2 rounded-md h-10 hover:bg-gray-100"
+                      className="flex items-center w-full gap-2 rounded-md h-10 hover:bg-gray-100 dark:hover:bg-purple-600"
                     >
                       <SVGBookmark /> Bookmarks
                     </Link>
@@ -89,6 +90,7 @@ export const Navbar = async () => {
           </li>
         </ul>
       </div>
+      <ModeToggle />
     </nav>
   );
 };

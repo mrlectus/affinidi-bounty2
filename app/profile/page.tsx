@@ -27,7 +27,7 @@ const Profile = async () => {
           </Avatar>
         </div>
       </div>
-      <div className="flex flex-col gap-4 p-4 pl-10">
+      <div className="flex flex-col gap-4 p-4 pl-10 md:justify-center md:items-center">
         <div className="flex gap-4 items-center">
           <SVGMessage />
           {email}
