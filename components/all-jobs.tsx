@@ -4,6 +4,15 @@ import { Job } from "./job";
 import React from "react";
 import { Skeleton } from "./ui/skeleton";
 import { useSearchParams } from "next/navigation";
+
+
+/**
+ * Fetches and displays paginated jobs.
+ *
+ * Uses the useFetchPaginatedJobs hook to fetch jobs data.
+ * Renders Skeleton UI if loading, otherwise maps jobs to Job components.
+ * Handles infinite scrolling - observes last job element and fetches next page if visible.
+ */
 export const AllJobs = () => {
   const params = useSearchParams();
   const searchCountry = params.get("country");
@@ -36,11 +45,11 @@ export const AllJobs = () => {
   if (jobs.isLoading) {
     return (
       <div className="flex flex-col gap-2 p-4">
-        <Skeleton className="h-4 w-full h-[200px] md:w-[500px]" />
-        <Skeleton className="h-4 w-full h-[200px] md:w-[500px]" />
-        <Skeleton className="h-4 w-full h-[200px] md:w-[500px]" />
-        <Skeleton className="h-4 w-full h-[200px] md:w-[500px]" />
-        <Skeleton className="h-4 w-full h-[200px] md:w-[500px]" />
+        <Skeleton className="w-full h-[200px] md:w-[500px]" />
+        <Skeleton className="w-full h-[200px] md:w-[500px]" />
+        <Skeleton className="w-full h-[200px] md:w-[500px]" />
+        <Skeleton className="w-full h-[200px] md:w-[500px]" />
+        <Skeleton className="w-full h-[200px] md:w-[500px]" />
       </div>
     );
   }

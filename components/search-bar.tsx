@@ -4,6 +4,14 @@ import { SVGLocation } from "./icons/icons";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import React from "react";
+
+/**
+ * SearchBar component renders a search bar with location icon, input field
+ * and search button. Allows user to search for jobs by country.
+ *
+ * Uses React state and hooks to manage search query value. Renders Link from
+ * Next.js to handle search form submission and page navigation.
+ */
 export const SearchBar = () => {
   const [country, setCountry] = React.useState("");
   return (

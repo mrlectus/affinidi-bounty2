@@ -73,6 +73,14 @@ export const useSendEmail = () => {
   });
 };
 
+/**
+ * Fetches paginated jobs data from the API for a given country.
+ *
+ * @param limit - The number of jobs to return per page.
+ * @param country - The country code to fetch jobs for.
+ *
+ * Returns paginated jobs data using React Query's infinite query hooks.
+ */
 export const useFetchPaginatedJobs = ({
   limit,
   country,
@@ -97,6 +105,14 @@ export const useFetchPaginatedJobs = ({
   });
 };
 
+/**
+ * Adds a job to the user's bookmarks.
+ *
+ * @param id - The ID of the job to add.
+ * @param email - The user's email address.
+ *
+ * @returns A React Query mutation config object for adding a bookmark.
+ */
 export const useAddBookmark = () => {
   return useMutation({
     mutationKey: ["add-bookmark"],
@@ -111,6 +127,14 @@ export const useAddBookmark = () => {
   });
 };
 
+/**
+ * Deletes a job bookmark for the given user.
+ *
+ * @param id - The ID of the job bookmark to delete.
+ * @param email - The email address of the user.
+ *
+ * @returns A React Query mutation config object for deleting a bookmark.
+ */
 export const useDeleteBookmark = () => {
   return useMutation({
     mutationKey: ["deleted-bookmark"],
@@ -125,6 +149,13 @@ export const useDeleteBookmark = () => {
   });
 };
 
+/**
+ * Fetches a job by ID using React Query.
+ *
+ * @param id - The ID of the job to fetch.
+ *
+ * @returns A React Query query config object for fetching the job.
+ */
 export const useGetJob = (id: number) => {
   return useQuery({
     queryKey: ["job", id],
@@ -132,6 +163,11 @@ export const useGetJob = (id: number) => {
   });
 };
 
+/**
+ * A React Query mutation hook for applying to a job.
+ *
+ * @returns A mutation config object for applying to a job.
+ */
 export const useApply = () => {
   return useMutation({
     mutationKey: ["apply"],

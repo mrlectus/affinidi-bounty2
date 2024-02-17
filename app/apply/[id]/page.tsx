@@ -25,6 +25,12 @@ const applicationSchema = z.object({
   cv: z.string(),
 });
 
+/**
+ * Form component for job applicants to submit their application.
+ * Uses React Hook Form and zod for validation.
+ * Submits the form data to the apply mutation.
+ */
+
 const Apply = ({ params: { id } }: { params: { id: string } }) => {
   const jobApply = useGetJob(Number(id));
   const { data } = useGetUser();

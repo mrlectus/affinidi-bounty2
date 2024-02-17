@@ -11,6 +11,13 @@ import {
 import { SVGBookmark, SVGProfile } from "./icons/icons";
 import { ModeToggle } from "./mode-toggle";
 
+/**
+ * Renders the navbar component which displays site branding,
+ * navigation links, and user account controls.
+ *
+ * Uses authentication utils to get user profile data and render
+ * appropriate UI based on auth state.
+ */
 export const Navbar = async () => {
   const { nickname, email, givenName, picture } = await getUserProfile();
   await createUser(email as string);

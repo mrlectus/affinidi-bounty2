@@ -2,6 +2,17 @@ import { useGetCountryInfo, useGetCurrency } from "@/app/hooks/hooks";
 import { formatNumber } from "@/utils/utils";
 import { useSearchParams } from "next/navigation";
 
+/**
+ * Renders a price component displaying a salary range.
+ *
+ * @param salary - The base salary amount
+ * @param type - The job type
+ * @param country - The country to convert the salary to the local currency
+ *
+ * Uses hooks to get country currency info and exchange rate.
+ * Formats the salary with the currency symbol and exchange rate.
+ * Renders the base salary and salary range in local currency.
+ */
 export const Price = ({
   salary,
   type,

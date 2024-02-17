@@ -12,6 +12,12 @@ import { useDeleteBookmark, useGetUser } from "@/app/hooks/hooks";
 import { Price } from "./price";
 import Link from "next/link";
 
+/**
+ * Renders a bookmark card with details and actions.
+ *
+ * Displays the bookmark title, company, location, salary.
+ * Has apply now and delete bookmark actions.
+ */
 export const Bookmark = (bookmark: any) => {
   const { data } = useGetUser();
   const email = data?.email;

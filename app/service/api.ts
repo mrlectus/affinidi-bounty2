@@ -119,6 +119,15 @@ export const getCurrency = async (symbol: string) => {
   return data.rates[symbol] as number;
 };
 
+
+/**
+ * Fetches all jobs from the API.
+ *
+ * @param pageParam - The page number to fetch.
+ * @param limit - The number of results per page.
+ * @param country - The country to filter jobs by.
+ * @returns The jobs data.
+ */
 export type TJobs = Prisma.JobGetPayload<{}>;
 export const getAllJobs = async ({
   pageParam,
@@ -141,6 +150,12 @@ export const getAllJobs = async ({
   return data as TJobs[];
 };
 
+/**
+ * Adds a job to the user's bookmarks.
+ *
+ * @param id - The ID of the job to bookmark.
+ * @param email - The email of the user bookmarking the job.
+ */
 export const addToBookmark = async ({
   id,
   email,
@@ -159,6 +174,12 @@ export const addToBookmark = async ({
   return data;
 };
 
+/**
+ * Removes a job from the user's bookmarks.
+ *
+ * @param id - The ID of the job to remove from bookmarks.
+ * @param email - The email of the user removing the bookmark.
+ */
 export const deleteBookmark = async ({
   id,
   email,
@@ -181,6 +202,12 @@ export const deleteBookmark = async ({
   }
 };
 
+/**
+ * Fetches a job by ID from the API.
+ *
+ * @param id - The ID of the job to fetch.
+ * @returns The job data.
+ */
 export const getJob = async (id: number) => {
   const response = await fetch(`/api/jobs/${id}`, {
     headers: {
@@ -191,6 +218,11 @@ export const getJob = async (id: number) => {
   return data as TJobs;
 };
 
+/**
+ * Applies to a job via the API.
+ *
+ * @returns A promise resolving to an object containing a message.
+ */
 export const apply = async () => {
   const response = await fetch(`/api/jobs/apply`, {
     method: "POST",

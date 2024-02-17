@@ -1,6 +1,11 @@
 import prisma from "@/app/db/prisma";
 import { NextRequest, NextResponse } from "next/server";
 
+/**
+ * Handles POST request to bookmark a job by id.
+ * Looks up the job by id and connects it to the user's bookmarks if found.
+ * Returns the bookmarked job or an error message.
+ */
 export const POST = async (request: NextRequest) => {
   const { pathname } = new URL(request.url);
   const { email } = await request.json();
@@ -29,6 +34,11 @@ export const POST = async (request: NextRequest) => {
   }
 };
 
+/**
+ * Handles DELETE request to remove a bookmarked job by id.
+ * Looks up the job by id and disconnects it from the user's bookmarks if found.
+ * Returns a success/error message.
+ */
 export const DELETE = async (request: NextRequest) => {
   const { pathname } = new URL(request.url);
   const { email } = await request.json();

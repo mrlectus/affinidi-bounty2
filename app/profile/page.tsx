@@ -2,6 +2,12 @@ import { SVGLocation, SVGMessage, SVGPhone } from "@/components/icons/icons";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { getUserProfile } from "@/utils/utils";
 
+/**
+ *Gets user profile data from API
+ * 
+ * @returns Promise resolving to user profile object
+ */
+
 const Profile = async () => {
   const {
     phone,

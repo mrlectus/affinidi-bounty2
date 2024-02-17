@@ -2,6 +2,17 @@ import prisma from "@/app/db/prisma";
 import { NextRequest, NextResponse } from "next/server";
 import { URL } from "url";
 
+/**
+ * Handles GET request to fetch jobs.
+ *
+ * Accepts the following query parameters:
+ * - country: Filter jobs by country, case insensitive.
+ * - page: The page number of results to return.
+ * - limit: The number of results per page.
+ *
+ * Returns a JSON response with the fetched jobs.
+ * Handles errors by returning 500 status.
+ */
 export const GET = async (req: NextRequest) => {
   const params = new URL(req.url);
   const country = params.searchParams.get("country") || undefined;

@@ -1,6 +1,12 @@
 import prisma from "@/app/db/prisma";
 import { NextRequest, NextResponse } from "next/server";
 
+/**
+ * GET handler for retrieving a job by ID.
+ *
+ * Looks up a job by the provided ID.
+ * Returns the job data if found, else returns 404.
+ */
 export const GET = async (
   _request: NextRequest,
   { params: { id } }: { params: { id: string } }

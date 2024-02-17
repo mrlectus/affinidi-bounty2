@@ -20,6 +20,13 @@ import { useAddBookmark, useGetUser } from "@/app/hooks/hooks";
 import { Price } from "./price";
 import Link from "next/link";
 
+/**
+ * Renders a job card with details like title, company, location,
+ * salary, apply button and bookmark button.
+ * Uses React hooks like useAddBookmark, useGetUser to get user data.
+ * Conditionally shows salary based on user's country.
+ * Allows applying and bookmarking jobs.
+ */
 export const Job = React.forwardRef((job: TJobs, ref: any) => {
   const bookmark = useAddBookmark();
   const { data } = useGetUser();
