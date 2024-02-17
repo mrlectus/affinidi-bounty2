@@ -3,11 +3,22 @@ import { useFetchPaginatedJobs, useGetUser } from "@/app/hooks/hooks";
 import { Job } from "./job";
 import React from "react";
 import { Skeleton } from "./ui/skeleton";
+import { useSearchParams } from "next/navigation";
 export const AllJobs = () => {
+  const params = useSearchParams();
+  const searchCountry = params.get("country");
   const { data } = useGetUser();
   const ref = React.useRef<IntersectionObserver>();
-  const country = data?.country; //TODO remember to change this later
+  const country =
+    searchCountry?.trim() === "" || searchCountry === null
+      ? data?.country
+      : searchCountry;
+  console.log("COUNTRY:", country);
+  console.log("SECOUNTRY:", searchCountry);
   const jobs = useFetchPaginatedJobs({ country: country as string, limit: 10 });
+  React.useEffect(() => {
+    jobs.refetch();
+  }, [searchCountry, country]);
   const lastPostRef = React.useCallback(
     (job: Element) => {
       if (jobs.isFetchingNextPage) return;

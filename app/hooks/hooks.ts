@@ -81,7 +81,7 @@ export const useFetchPaginatedJobs = ({
   country: string;
 }) => {
   return useInfiniteQuery({
-    queryKey: ["jobs"],
+    queryKey: ["jobs", country],
     queryFn: ({ pageParam }) =>
       getAllJobs({
         pageParam,

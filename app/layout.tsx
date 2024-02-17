@@ -30,12 +30,12 @@ export default function RootLayout({
             >
               <Navbar />
               {children}
+              <ReactQueryDevtools
+                initialIsOpen={false}
+                buttonPosition="bottom-left"
+              />
+              <Toaster />
             </ThemeProvider>
-            <ReactQueryDevtools
-              initialIsOpen={false}
-              buttonPosition="bottom-left"
-            />
-            <Toaster />
           </body>
         </UserProvider>
       </QueryProvider>

@@ -18,7 +18,6 @@ import { Button } from "./ui/button";
 import { SVGBookmark, SVGLocation, SVGOffice } from "./icons/icons";
 import { useAddBookmark, useGetUser } from "@/app/hooks/hooks";
 import { Price } from "./price";
-import { revalidatePath } from "next/cache";
 import Link from "next/link";
 
 export const Job = React.forwardRef((job: TJobs, ref: any) => {
@@ -61,7 +60,6 @@ export const Job = React.forwardRef((job: TJobs, ref: any) => {
             <TooltipTrigger
               onClick={() => {
                 bookmark.mutate({ id: job.id, email: email as string });
-                revalidatePath("/bookmarks");
               }}
               className="w-fit border-2 p-1 rounded-md text-white bg-black"
             >

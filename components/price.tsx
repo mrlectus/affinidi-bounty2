@@ -1,5 +1,6 @@
 import { useGetCountryInfo, useGetCurrency } from "@/app/hooks/hooks";
 import { formatNumber } from "@/utils/utils";
+import { useSearchParams } from "next/navigation";
 
 export const Price = ({
   salary,
@@ -10,7 +11,13 @@ export const Price = ({
   type: string;
   country: string;
 }) => {
-  const symbol = useGetCountryInfo(country as string);
+  const params = useSearchParams();
+  const searchCountry = params.get("country");
+  const symbol = useGetCountryInfo(
+    searchCountry?.trim() === "" || searchCountry === null
+      ? (country as string)
+      : searchCountry
+  );
   const currency = useGetCurrency(symbol.data?.iso_code);
   const price = currency?.data ? currency.data.toFixed(0) : 1;
   return (
