@@ -29,7 +29,7 @@ const Bookmarks = async () => {
   return (
     <Suspense fallback={<div>Loading...</div>}>
       <div className="flex p-5 gap-3 flex-col">
-        {bookmarks?.map((bookmark) => {
+        {bookmarks?.map((bookmark: any) => {
           return <Bookmark key={bookmark.id} {...bookmark} />;
         })}
       </div>
