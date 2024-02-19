@@ -64,16 +64,13 @@ export const getUserInfo = async () => {
  * @returns The API response.
  */
 export const sendEmail = async ({ message, email }: Record<string, string>) => {
-  const response = await fetch(
-    `https://mrlectus-stackup-6cd355c4b177.herokuapp.com/send`,
-    {
-      method: "POST",
-      body: JSON.stringify({ message, email }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }
-  );
+  const response = await fetch(`/api/mail/send`, {
+    method: "POST",
+    body: JSON.stringify({ message, email }),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
   const data = await response.json();
   return data;
 };
@@ -118,7 +115,6 @@ export const getCurrency = async (symbol: string) => {
   const data = await response.json();
   return data.rates[symbol] as number;
 };
-
 
 /**
  * Fetches all jobs from the API.

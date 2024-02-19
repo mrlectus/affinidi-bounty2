@@ -2,6 +2,7 @@ import { getUserProfile } from "@/utils/utils";
 import prisma from "../db/prisma";
 import { Bookmark } from "@/components/bookmark";
 import { Suspense } from "react";
+import { LoaderIcon } from "react-hot-toast";
 /**
  * Fetches the user profile from the database.
  *
@@ -40,7 +41,7 @@ const Bookmarks = async () => {
       </div>
     );
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={<LoaderIcon />}>
       <div className="flex p-5 gap-3 flex-col">
         {bookmarks?.map((bookmark: any) => {
           return <Bookmark key={bookmark.id} {...bookmark} />;

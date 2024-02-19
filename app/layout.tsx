@@ -19,6 +19,9 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
+      <head>
+        <link sizes="any" type="image/x-icon" rel="icon" href="/favicon.png" />
+      </head>
       <QueryProvider>
         <UserProvider>
           <body className={inter.className}>

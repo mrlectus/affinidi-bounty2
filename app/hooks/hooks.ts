@@ -12,6 +12,7 @@ import {
 } from "../service/api";
 import toast from "react-hot-toast";
 import { Record } from "@prisma/client/runtime/library";
+import { useRouter } from "next/navigation";
 
 /**
  * Fetches user info from the API.
@@ -67,8 +68,8 @@ export const useSendEmail = () => {
     onSuccess: (data) => {
       toast.success(data.message);
     },
-    onError: () => {
-      toast.success("mail is on it's way");
+    onError: (error) => {
+      toast.success(error.message);
     },
   });
 };
@@ -136,12 +137,14 @@ export const useAddBookmark = () => {
  * @returns A React Query mutation config object for deleting a bookmark.
  */
 export const useDeleteBookmark = () => {
+  const router = useRouter();
   return useMutation({
     mutationKey: ["deleted-bookmark"],
     mutationFn: ({ id, email }: { id: number; email: string }) =>
       deleteBookmark({ id, email }),
     onSuccess: (data) => {
       toast.success(data?.message);
+      router.refresh();
     },
     onError: (error) => {
       toast.error(error.message);

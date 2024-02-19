@@ -1,5 +1,10 @@
 "use client";
-import { useApply, useGetJob, useGetUser } from "@/app/hooks/hooks";
+import {
+  useApply,
+  useGetJob,
+  useGetUser,
+  useSendEmail,
+} from "@/app/hooks/hooks";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -62,11 +67,16 @@ const Apply = ({ params: { id } }: { params: { id: string } }) => {
     jobApply?.data?.title,
   ]);
 
-  const apply = useApply();
+  const apply = useSendEmail();
   return (
     <Form {...form}>
       <form
-        onSubmit={form.handleSubmit(() => apply.mutate())}
+        onSubmit={form.handleSubmit(() =>
+          apply.mutate({
+            email: data?.email as string,
+            message: `Application for ${jobApply?.data?.title} at ${jobApply?.data?.companyName}`,
+          })
+        )}
         className="space-y-8 p-10 md:w-fit"
       >
         <FormField
